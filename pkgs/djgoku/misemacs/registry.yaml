@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/aquaproj/aqua/main/json-schema/registry.json
+packages:
+  - type: github_release
+    repo_owner: djgoku
+    repo_name: misemacs
+    version_constraint: "false"
+    version_overrides:
+      - version_constraint: "true"
+        asset: misemacs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+        format: tar.gz
+        replacements:
+          darwin: macos
+        checksum:
+          type: github_release
+          asset: SHASUMS256.txt
+          algorithm: sha256
+        supported_envs:
+          - darwin/arm64
